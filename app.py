@@ -23,7 +23,7 @@ def Index():
     data = cur.fetchall()
     cur.close()
 
-    return render_template('index.html', students=data)
+    return render_template('email.html', students=data)
 
 
 @app.route('/insert', methods = ['POST'])
@@ -76,7 +76,7 @@ def Send():
     print("Emails are:", emails) 
     cur.close()
 
-    return render_template('index.html', students=data)
+    return redirect(url_for('Index'))
 
 
 if __name__ == "__main__":
