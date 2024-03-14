@@ -3,9 +3,9 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 # Email configuration
-sender_email = "nawaraskc888@gmail.com"
-receiver_email = "recipient_email@example.com"
-password = "your_email_password"
+sender_email = "nawaras.kc@aiesec.net"
+receiver_email = "fimenat857@hdrlog.com"
+password = "[Create_Aeisec_123_$%^_]"
 
 # Create a multipart message
 message = MIMEMultipart()

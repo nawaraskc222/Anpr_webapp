@@ -39,10 +39,10 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `email`, `phone`) VALUES
-(23, 'motech noel', 'mosesnoel02@gmail.com', '+255752541568'),
-(24, 'Thiago Moses', 'moses@noel.com', '0712541669'),
-(25, 'Saratex Marie', 'moses@noel.com', '0712541669'),
-(26, 'Kamonyo Kiiza', 'kamonyomoses@gmail.com', '+255752541568');
+(1, 'motech noel', 'mosesnoel02@gmail.com', '+255752541568'),
+(2, 'Thiago Moses', 'moses@noel.com', '0712541669'),
+(3, 'Saratex Marie', 'moses@noel.com', '0712541669'),
+(4, 'Kamonyo Kiiza', 'kamonyomoses@gmail.com', '+255752541568');
 
 --
 -- Indexes for dumped tables
