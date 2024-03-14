@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 # Email configuration
 sender_email = "nawaras.kc@aiesec.net"
 receiver_email = "fimenat857@hdrlog.com"
-password = "[Create_Aeisec_123_$%^_]"
+password = "demooo"
 
 # Create a multipart message
 message = MIMEMultipart()
