@@ -18,7 +18,7 @@
 
             <!-- content goes here -->
             <div class="col-sm-8">
-<h2 >Student List <button class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">Add Student</button></h2>
+<h2 >Invitation List <button class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">Add Partygoers</button></h2>
 
 {%with messages = get_flashed_messages()%}
 {%if messages%}
@@ -66,6 +66,10 @@
                             <input name="phone" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Phone Number">
                           </div>
 
+                          <div class="form-group">
+                            <label>Upload photo</label>
+                            <input name="photo" type="text" class="form-control" id="exampleFormPhotoInput1" placeholder="upload photo">
+                          </div>
                           <button type="submit" class="btn btn-primary mb-2">Save</button>
                      
                       </form>
@@ -86,10 +90,11 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th scope="col">S/N</th>
+            <th scope="col">id</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
+            <th scope="col">photo</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -100,11 +105,12 @@
         <td>{{row.1}}</td>
         <td>{{row.2}}</td>
         <td>{{row.3}}</td>
+        <td>{{row.4}}</td>
         <td>
             <a href="/update/{{row.0}}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modaledit{{row.0}}">Edit</a>
             <a href="/delete/{{ row.0 }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete</a>
 
-            <a href="/send" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Send mail</a>
+            <a href="/send" onclick="return confirm('send mail?')" class="btn btn-danger btn-sm">Send mail</a>
 
         </td>
     </tr>
@@ -116,7 +122,7 @@
                 <div class="modal-content">
        
                     <div class="modal-header">
-                        <h5 class="modal-title text-primary" style="align-content: center;">Update Student Details</h5>    
+                        <h5 class="modal-title text-primary" style="align-content: center;">Update Partygoers Details</h5>    
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -141,7 +147,12 @@
                                 <label>Phone Number</label>
                                 <input value="{{row.3}}" name="phone" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Phone Number">
                               </div>
-    
+
+                              <div class="form-group">
+                                <label>photo</label>
+                                <input value="{{row.4}}" name="photo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Photo">
+                              </div>
+                              
                               <button type="submit" class="btn btn-success mb-2">Update</button>
                          
                           </form>

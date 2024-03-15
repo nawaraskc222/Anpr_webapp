@@ -9,7 +9,7 @@ app.secret_key = 'many random bytes'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'crud'
+app.config['MYSQL_DB'] = 'mydb'
 
 mysql = MySQL(app)
 
@@ -33,8 +33,9 @@ def insert():
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
+        photo = request.form['photo']
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO students (name, email, phone) VALUES (%s, %s, %s)", (name, email, phone))
+        cur.execute("INSERT INTO students (name, email, phone,photo) VALUES (%s, %s, %s,%s)", (name, email, phone,photo))
         mysql.connection.commit()
         return redirect(url_for('Index'))
 
@@ -55,12 +56,13 @@ def update():
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
+        photo = request.form['photo']
 
         cur = mysql.connection.cursor()
         cur.execute("""
-        UPDATE students SET name=%s, email=%s, phone=%s
+        UPDATE students SET name=%s, email=%s, phone=%s,photo=%s
         WHERE id=%s
-        """, (name, email, phone, id_data))
+        """, (name, email, phone, photo,id_data))
         flash("Data Updated Successfully")
         return redirect(url_for('Index'))
 
