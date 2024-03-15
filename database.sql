@@ -37,7 +37,7 @@ drop TABLE students;
 use mydb;
 
 CREATE TABLE `students` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
@@ -56,6 +56,12 @@ INSERT INTO `students` (`id`, `name`, `email`, `phone`, `photo`) VALUES
 (4, 'Kamonyo Kiiza', 'kamonyomoses@gmail.com', '+255752541568', 'photo4');
 
 
+
+use mydb;
+
+select * from students;
+
+
 --
 -- Indexes for dumped tables
 --
@@ -63,6 +69,8 @@ INSERT INTO `students` (`id`, `name`, `email`, `phone`, `photo`) VALUES
 --
 -- Indexes for table `students`
 --
+
+use mydb;
 ALTER TABLE `students`
   ADD PRIMARY KEY (`id`);
 
