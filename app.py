@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, url_for, flash
 from werkzeug.utils import redirect
 from flask_mysqldb import MySQL
+import os 
+from deeplearning import OCR
+
+BASE_PATH = os.getcwd()
+UPLOAD_PATH = os.path.join(BASE_PATH,'static/upload/')
 
 
 app = Flask(__name__)
@@ -23,21 +28,36 @@ def Index():
     data = cur.fetchall()
     cur.close()
 
-    return render_template('email.html', students=data)
+    return render_template('Index.html', students=data)
 
 
-@app.route('/insert', methods = ['POST'])
+@app.route('/insert', methods = ['POST','GET'])
 def insert():
     if request.method == "POST":
+        print(request.form)
         flash("Data Inserted Successfully")
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
-        photo = request.form['photo']
+        # photo = request.form['photo']
+        
+
+
+        upload_file = request.form['photo']
+        filename = upload_file.filename
+        path_save = os.path.join(UPLOAD_PATH,filename)
+        upload_file.save(path_save)
+        photo = OCR(path_save,filename)
+
+        
+      
+
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO students (name, email, phone,photo) VALUES (%s, %s, %s,%s)", (name, email, phone,photo))
         mysql.connection.commit()
         return redirect(url_for('Index'))
+    
+        
 
 @app.route('/delete/<string:id_data>', methods = ['GET'])
 def delete(id_data):
